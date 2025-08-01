@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benefits of Democracy</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <div class="container">
+        <h1>Benefits of Democracy</h1>
+
+        <h3>Use Pages 24 - 26. Select your <b>spiciness:</b> Mild, Medium, or HOT! questions. This is a challenge by choice!</h3>
+
+        <img src="images/freedomunity-editorialteam.png" alt="Thinking Person" style="height:200px";>
+
+        <div class="controls">
+            <label for="difficulty">Select Spiciness:</label>
+            <select id="difficulty">
+                <option value="easy">Mild</option>
+                <option value="medium">Medium</option>
+                <option value="hard">HOT!</option>
+            </select>
+            <button id="show-questions-btn">
+                Show Questions
+            </button>
+        </div>
+
+        <table id="questions-table" class="hidden">
+            <thead>
+                <tr>
+                    <th>Questions will appear below. Answer the questions in your Guided Packet</th> 
+                    
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        const allQuestions = [
+            {
+                question: "What are some benefits of democracy mentioned in the text?",
+                difficulty: "easy"
+            },
+            {
+                question: " How do local connections help communities during times of crisis?",
+                difficulty: "easy"
+            },
+        
+            {
+                question: "Why do you think it is important for everyone in a community to feel welcome and encouraged to participate?",
+                difficulty: "easy"
+            },
+            {
+                question: "How can you contribute to your community to help make it a better place for everyone?",
+                difficulty: "easy"
+            },
+            {
+                question: "What are some benefits of bringing diverse groups of people together according to the text?",
+                difficulty: "medium"
+            },
+            {
+                question: "How do local connections help communities during times of crisis?",
+                difficulty: "medium"
+            },
+            {
+                question: "Why does the text suggest that being an 'expert' includes wisdom and lived experience?",
+                difficulty: "medium"
+            },
+            {
+                question: "Do you agree that everyone should be encouraged to participate in democracy? Why or why not?",
+                difficulty: "medium"
+            },
+            {
+                question: "How does the image of the community gathering reinforce the ideas presented in the text about democracy?",
+                difficulty: "medium"
+            },
+            {
+                question: "What are two benefits of locally-focused democracy mentioned in the text?",
+                difficulty: "hard"
+            },
+            {
+                question: "How does the text describe the role of local connections during a crisis?",
+                difficulty: "hard"
+            },
+            {
+                question: "According to the text, what does it mean to be an 'expert', and how does this definition differ from traditional views of expertise?",
+                difficulty: "hard"
+            },
+            {
+                question: "How does the illustration of the community gathering support the main ideas presented in the text?",
+                difficulty: "hard"
+            },
+            {
+                question: "Why do you think it is important for everyone in a community to feel welcome and encouraged to participate? Provide reasons based on the text.",
+                difficulty: "hard"
+            }
+        ];
+
+        const showQuestionsBtn = document.getElementById('show-questions-btn');
+        const questionsTable = document.getElementById('questions-table');
+        const tableBody = questionsTable.querySelector('tbody');
+        const difficultySelect = document.getElementById('difficulty');
+
+        showQuestionsBtn.addEventListener('click', () => {
+            const selectedDifficulty = difficultySelect.value;
+            
+            const filteredQuestions = allQuestions.filter(q => q.difficulty === selectedDifficulty);
+
+            questionsTable.classList.remove('hidden');
+            
+            displayQuestions(filteredQuestions);
+        });
+
+        
+        function displayQuestions(questions) {
+            tableBody.innerHTML = '';
+            
+            questions.forEach(q => {
+                const tableRow = document.createElement('tr');
+                tableRow.innerHTML = `
+                    <td>${q.question}</td>
+                `;
+                tableBody.appendChild(tableRow);
+            });
+        }
+    </script>
+
+<footer>
+       <div class="footer">
+            <p> <b>You've done all your learning! Next step is to make a poster! You can close the website using evidence
+                and analysis. Here is the question: What does the phrase "Freedom and Unity" mean in Vermont? 
+                Why is it important for democracy? </b></p>
+
+        </div>
+</footer>
+</body>
+</html>
